@@ -1,7 +1,4 @@
 //TO DO: 
-//Init git
-//Funcion de borrado
-//Funcion de edicion
 //Implementar tabla de tareas en la mitad inferior de la pagina
 
 import { Timeline } from "vis-timeline/esnext";
@@ -9,12 +6,14 @@ import { DataSet } from "vis-data/esnext";
 import "vis-timeline/styles/vis-timeline-graph2d.min.css";
 
 import randomColor from 'randomcolor';
-//import "./src/items.css";
+import "./src/items.css";
+
 
 //Get all the elements
-
 const addTaskForm = document.getElementById('addTaskForm');
 const graphContainer = document.getElementById('graphContainer');
+const editFormModal = document.getElementById('editTaskFormModal');
+const editForm = document.getElementById('editTaskForm');
 
 let timeline;
 var items;
@@ -78,7 +77,45 @@ var options = {
             //TO DO: implement a message to the user about the error
             callback(null);
         }
-    }
+    },
+
+    onUpdate: function(item, callback){
+        //Updates the title
+        if(item.id!= null){
+            //Checks if the title is in length limits
+            if(item.content.length <50){
+                //Set the form values with the values form the task to edit
+                editForm.elements.namedItem("editTaskTitle").value = item.content;
+                editForm.elements.namedItem("editTaskDesc").value = item.title
+                //Shows modal containing the form to edit the task values
+                editFormModal.style.display = "block";
+                //Listen to submit event of the form to edit the task
+                editForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    //Gets the index of the task in the tasksArray
+                    let indexOnTasksArray = tasksArray.findIndex(task => task.id === item.id);
+                    //Updates the task in the tasksArray with values from the form
+                    tasksArray[indexOnTasksArray].content = editForm.elements.namedItem("editTaskTitle").value;
+                    tasksArray[indexOnTasksArray].title = editForm.elements.namedItem("editTaskDesc").value;
+                    //Updates session storage data
+                    sessionStorage.setItem(item.id.toString(), JSON.stringify(tasksArray[indexOnTasksArray]));
+                    //Resets the form and the modal
+                    editForm.reset();
+                    editFormModal.style.display = "none";
+                    //Updates timeline
+                    timeline.setItems(tasksArray);
+                    //Saves the changes in the item
+                    callback(null);
+                });
+            }else{
+                alert(`The title of the task ${item.id} is too long`);
+                callback(null);
+            }
+        }else{
+            alert(`The task with id ${item.id} doesn't exist`);
+            callback(null);
+        }
+    },
 };
 
 
