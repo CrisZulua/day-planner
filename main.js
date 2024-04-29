@@ -39,6 +39,28 @@ var options = {
         axis: 'top',
         item: 'top'
     },
+
+    onRemove: function (item, callback) {
+        //Remove item from tasksArray and remove id from idsArray and redraw the timeline
+        if(item.id != null){
+            alert(`Are you sure you want to delete this task ${item.content}?`);
+            //Get the indexes of the items in arrays
+            let indexOnTasksArray = tasksArray.findIndex(task => task.id === item.id);
+            let indexOnIdsArray = idsArray.findIndex(id => id === item.id);
+            //Remove the items without leaving empty spaces
+            tasksArray.splice(indexOnTasksArray,1);
+            idsArray.splice(indexOnIdsArray,1);
+            //Update session Storage
+            sessionStorage.removeItem(item.id.toString());
+            sessionStorage.setItem('tasksIdsArray', JSON.stringify(idsArray));
+            //Update timeline
+            timeline.setItems(tasksArray);
+            callback(null);
+        }else{
+            alert(`The task with id ${item.id} doesn't exist`);
+            callback(null);
+        }
+    },
 };
 
 
