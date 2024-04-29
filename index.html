@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/output.css">
+    <script type="module" src="./main.js" async></script>
+    
+    <title>DayPlanner</title>
+</head>
+<body class="bg-body-bg font-sans m-12 flex flex-row h-[90vh] justify-stretch gap-4">
+    <div id="header" class="w-[25vw] flex flex-col justify-center border-on-primary-container border-r border-opacity-20 pr-4">
+        <h1 class="flex text-primary font-extrabold text-[50px]">DayPlanner</h1>
+        <h2 class="flex text-on-secondary-container text-[20px] mb-12">What are your plans for today?</h2>
+        <form class="flex flex-col" id="addTaskForm">
+            <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tTitle">Task Title</label>
+            <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="text" id="tTitle" name="taskTitle" required maxlength="50" placeholder="Your Task Name">
+            <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tDesc">Task Description</label>
+            <textarea class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none resize-y h-[10em]" type="text" id="tDesc" name="taskDesc" maxlength="250" placeholder="This field is optional" cols="30" rows="10"></textarea>
+            <div class="flex flex-row gap-[30%]">
+                <div class="flex flex-col w-[7rem]">
+                    <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tStart">From</label>
+                    <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="time" id="tStart" name="taskStart" required placeholder="08:00">
+                </div>
+                <div class="flex flex-col w-[7rem]">
+                    <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tEnd">To</label>
+                    <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="time" id="tEnd" name="taskEnd" required placeholder="17:00">
+                </div>
+            </div>
+            <input class="flex text-on-primary-container hover:bg-primary-container justify-center
+            w-full h-14 mt-6 border border-on-primary-container border-opacity-10 border-solid rounded-3xl hover:border-primary-container py-2 px-7 shadow-xl" 
+            type="submit"  value="+ Add">
+        </form>
+    </div>
+    <div class="flex flex-col w-[90vw] h-[90vh]" id="graphContainer"></div>
+    
+</body>
+</html>

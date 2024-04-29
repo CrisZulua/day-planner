@@ -1,0 +1,23 @@
+:root{
+    --body-bg-color: #f0f3e8;
+      --primary-color: #386A20;
+      --on-primary-color: #FFFFFF;
+      --primary-container-color: #B8F397;
+      --on-primary-container-color: #042100;
+      --secondary-color: #55624C;
+      --on-secondary-color: #FFFFFF;
+      --secondary-container-color: #D9E7CB;
+      --on-secondary-container-color: #131F0D;
+      --tertiary-color: #386667;
+      --on-tertiary-color: #FFFFFF;
+      --tertiary-container-color: #bbebeb;
+      --on-tertiary-container-color: #002020;
+}
+
+
+.vis-item.vis-range{
+    background-color: var(--tertiary-container-color);
+    color: var(--on-tertiary-container-color);
+    border-color: var(--tertiary-color);
+    border-radius: .3rem;
+}
