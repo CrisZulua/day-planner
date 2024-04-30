@@ -610,6 +610,10 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -624,6 +628,10 @@ video {
 
 .h-\[90vh\] {
   height: 90vh;
+}
+
+.h-12 {
+  height: 3rem;
 }
 
 .w-\[25vw\] {
@@ -642,8 +650,20 @@ video {
   width: 100%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .resize-y {
   resize: vertical;
+}
+
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
 }
 
 .flex-row {
@@ -654,8 +674,28 @@ video {
   flex-direction: column;
 }
 
+.content-between {
+  align-content: space-between;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .justify-stretch {
@@ -668,6 +708,14 @@ video {
 
 .gap-\[30\%\] {
   gap: 30%;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.justify-self-end {
+  justify-self: end;
 }
 
 .rounded-2xl {
@@ -861,6 +909,14 @@ video {
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.hover\:h-14:hover {
+  height: 3.5rem;
+}
+
+.hover\:w-14:hover {
+  width: 3.5rem;
 }
 
 .hover\:border-primary-container:hover {

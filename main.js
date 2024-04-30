@@ -53,7 +53,7 @@ var options = {
             sessionStorage.removeItem(item.id.toString());
             sessionStorage.setItem('tasksIdsArray', JSON.stringify(idsArray));
             //Update timeline
-            timeline.setItems(tasksArray);
+            updateTimeLine();
             callback(null);
         }else{
             alert(`The task with id ${item.id} doesn't exist`);
@@ -69,7 +69,7 @@ var options = {
             tasksArray[indexOnTasksArray].start = item.start;
             tasksArray[indexOnTasksArray].end = item.end;
             sessionStorage.setItem(item.id.toString(), JSON.stringify(tasksArray[indexOnTasksArray]));
-            timeline.setItems(tasksArray);
+            updateTimeLine();
             //Update the time stamps of the task moved
             callback(item);
         }else{
@@ -103,7 +103,7 @@ var options = {
                     editForm.reset();
                     editFormModal.style.display = "none";
                     //Updates timeline
-                    timeline.setItems(tasksArray);
+                    updateTimeLine();
                     //Saves the changes in the item
                     callback(null);
                 });
@@ -176,7 +176,7 @@ function getTaskInfo(){
     const endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), endHours, endMinutes);
     
     //Generate random color
-    const color = randomColor({luminosity: 'light', hue: "green"});
+    const color = randomColor({luminosity: 'light',});
     //Create task Object
     const task = {
         id: ++tId,
@@ -229,12 +229,13 @@ function getSessionStorageData(){
     items = new DataSet(tasksArray);
     //Create timeline
     timeline = new Timeline(graphContainer, items, options);
-    
+    timeline.fit();    
 }
 
 function updateTimeLine(){
     //Function to update the timeline with the new task added
     timeline.setItems(tasksArray);
+    timeline.fit();
 }
 
 

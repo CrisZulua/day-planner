@@ -11,29 +11,34 @@
     
     <title>DayPlanner</title>
 </head>
-<body class="bg-body-bg font-sans m-12 flex flex-row h-[90vh] justify-stretch gap-4">
-    <div id="header" class="w-[25vw] flex flex-col justify-center border-on-primary-container border-r border-opacity-20 pr-4">
-        <h1 class="flex text-primary font-extrabold text-[50px]">DayPlanner</h1>
-        <h2 class="flex text-on-secondary-container text-[20px] mb-12">What are your plans for today?</h2>
-        <form class="flex flex-col" id="addTaskForm">
-            <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tTitle">Task Title</label>
-            <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="text" id="tTitle" name="taskTitle" required maxlength="50" placeholder="Your Task Name">
-            <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tDesc">Task Description</label>
-            <textarea class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none resize-y h-[10em]" type="text" id="tDesc" name="taskDesc" maxlength="250" placeholder="This field is optional" cols="30" rows="10"></textarea>
-            <div class="flex flex-row gap-[30%]">
-                <div class="flex flex-col w-[7rem]">
-                    <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tStart">From</label>
-                    <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="time" id="tStart" name="taskStart" required placeholder="08:00">
+<body class="bg-body-bg font-sans m-12 flex flex-row h-[90vh] content-between gap-4">
+    <div id="header" class="w-[25vw] flex flex-col justify-between border-on-primary-container border-r border-opacity-20 pr-4">
+        <div class="flex flex-col">
+            <h1 class="flex text-primary font-extrabold text-[50px]">DayPlanner</h1>
+            <h2 class="flex text-on-secondary-container text-[20px] mb-12">What are your plans for today?</h2>
+            <form class="flex flex-col" id="addTaskForm">
+                <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tTitle">Task Title</label>
+                <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="text" id="tTitle" name="taskTitle" required maxlength="50" placeholder="Your Task Name">
+                <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tDesc">Task Description</label>
+                <textarea class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none resize-y h-[10em]" type="text" id="tDesc" name="taskDesc" maxlength="250" placeholder="This field is optional" cols="30" rows="10"></textarea>
+                <div class="flex flex-row gap-[30%]">
+                    <div class="flex flex-col w-[7rem]">
+                        <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tStart">From</label>
+                        <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="time" id="tStart" name="taskStart" required placeholder="08:00">
+                    </div>
+                    <div class="flex flex-col w-[7rem]">
+                        <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tEnd">To</label>
+                        <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="time" id="tEnd" name="taskEnd" required placeholder="17:00">
+                    </div>
                 </div>
-                <div class="flex flex-col w-[7rem]">
-                    <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tEnd">To</label>
-                    <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="time" id="tEnd" name="taskEnd" required placeholder="17:00">
-                </div>
-            </div>
-            <input class="flex text-on-primary-container hover:bg-primary-container justify-center
-            w-full h-14 mt-6 border border-on-primary-container border-opacity-10 border-solid rounded-3xl hover:border-primary-container py-2 px-7 shadow-xl" 
-            type="submit"  value="+ Add">
-        </form>
+                <input class="flex text-on-primary-container hover:bg-primary-container justify-center
+                w-full h-14 mt-6 border border-on-primary-container border-opacity-10 border-solid rounded-3xl hover:border-primary-container py-2 px-7 shadow-xl" 
+                type="submit"  value="+ Add">
+            </form>
+        </div>
+        <div class="flex">
+            <img src="./src/static/MaterialSymbolsHelp.svg" alt="Help" class="w-12 h-12 self-end justify-self-end">
+        </div>
     </div>
     <div class="flex flex-col w-[90vw] h-[90vh]" id="graphContainer"></div>
     <div id="editTaskFormModal" class="flex-col hidden">
