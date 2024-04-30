@@ -12,7 +12,50 @@
     <title>DayPlanner</title>
 </head>
 <body class="bg-body-bg font-sans m-12 flex flex-row h-[90vh] content-between gap-4">
-    <div id="header" class="w-[25vw] flex flex-col justify-between border-on-primary-container border-r border-opacity-20 pr-4">
+    <div id="helpModal" class="bg-white hidden">
+        <div class="bg-secondary-container m-12 max-w-[20vw] h-[90vh]">
+            <h1 class="text-[40px] font-extrabold text-on-secondary-container text-wrap">How does it work?</h1>
+            <details>
+                <summary class="text-on-secondary-container text-[25px] font-semibold">What is DayPlanner?</summary>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">DayPlanner is a web application that allows you to plan out your day. 
+                    You can add, edit, and delete tasks as you like.
+                </p>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">Your tasks will be
+                    display on a interactive timeline, where you can zoom in, zoom out, move tasks to a different point of time and change it's start time and end time.
+                </p>
+            </details>
+            <details name="help">
+                <summary class="text-on-secondary-container text-[25px] font-semibold">Add new tasks</summary>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">To add a new task, fill out the form and click the add button.
+                </p>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">
+                    Whenever a new task is added, the timeline will automatically fit all tasks into the timeline.
+                </p>
+            </details>
+            <details name="help">
+                <summary class="text-on-secondary-container text-[25px] font-semibold">Delete tasks</summary>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">To delete a task, click on the task you want to delete to select it. 
+                    Then click the delete button next to the task.
+                </p>
+            </details>
+            <details name="help">
+                <summary class="text-on-secondary-container text-[25px] font-semibold">Edit tasks</summary>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">To edit a task, double click on the task you want to edit and a form will be 
+                    displayed with the task info to change.
+                </p>
+                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">
+                    If you accidentally double click on a task, just click outside of the form to close it.
+                </p>
+            </details>
+            <details name="help">
+                <summary class="text-on-secondary-container text-[25px] font-semibold">Timeline features</summary>
+                <p class="text-on-secondary-container text-[20px] text-wrap ml-7"><span class="font-medium">Scroll Down: </span>Zoom in on timeline.</p>
+                <p class="text-on-secondary-container text-[20px] text-wrap ml-7"><span class="font-medium">Scroll Up: </span>Zoom out on timeline.</p>
+                <p class="text-on-secondary-container text-[20px] text-wrap ml-7"><span class="font-medium">Drag: </span>Move timeline left/right.</p>
+            </details>
+        </div> 
+    </div>
+    <div id="header" class="w-[25vw] flex flex-col justify-between pr-4">
         <div class="flex flex-col">
             <h1 class="flex text-primary font-extrabold text-[50px]">DayPlanner</h1>
             <h2 class="flex text-on-secondary-container text-[20px] mb-12">What are your plans for today?</h2>
@@ -37,10 +80,10 @@
             </form>
         </div>
         <div class="flex">
-            <img src="./src/static/MaterialSymbolsHelp.svg" alt="Help" class="w-12 h-12 self-end justify-self-end">
+            <img id="helpModalBtn" src="./src/static/MaterialSymbolsHelp.svg" alt="Help" class="w-12 h-12 self-end justify-self-end">
         </div>
     </div>
-    <div class="flex flex-col w-[90vw] h-[90vh]" id="graphContainer"></div>
+    <div class="flex flex-col w-full h-[90vh]" id="graphContainer"></div>
     <div id="editTaskFormModal" class="flex-col hidden">
         <div id="formContainer" class="bg-tertiary-container my-[10%] mx-[30%] px-6 py-8 border-[1em] border-solid border-tertiary-container rounded-2xl">
             <h1 class="flex text-on-tertiary-container font-extrabold text-[50px]">Edit Task</h1>

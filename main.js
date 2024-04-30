@@ -14,6 +14,8 @@ const addTaskForm = document.getElementById('addTaskForm');
 const graphContainer = document.getElementById('graphContainer');
 const editFormModal = document.getElementById('editTaskFormModal');
 const editForm = document.getElementById('editTaskForm');
+const helpModalBtn = document.getElementById('helpModalBtn');
+const helpModal = document.getElementById('helpModal');
 
 let timeline;
 var items;
@@ -138,6 +140,17 @@ document.addEventListener('click', (event) => {
         editForm.reset();
     }
 })
+
+helpModalBtn.addEventListener('click', (event) => {
+    helpModal.style.display = "block";
+});
+
+document.addEventListener('click', (event) => {
+    //If the user clicks outside the modal, close it
+    if(event.target == helpModal){
+        helpModal.style.display = "none";
+    }
+});
 
 //FUNCTIONS
 
