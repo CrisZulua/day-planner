@@ -36,17 +36,19 @@
         </form>
     </div>
     <div class="flex flex-col w-[90vw] h-[90vh]" id="graphContainer"></div>
-    <div id="editTaskFormModal" class="flex flex-col">
-        <h1 class="flex text-primary font-extrabold text-[50px]">Edit Task</h1>
-        <form id="editTaskForm" class="flex flex-col">
-            <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tTitle">Task Title</label>
-            <input class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none" type="text" id="tTitle" name="editTaskTitle" required maxlength="50" placeholder="Your Task Name">
-            <label class="bg-on-primary px-3 pt-2 border-t border-x border-solid rounded-t-xl" for="tDesc">Task Description</label>
-            <textarea class="mb-5 px-3 pb-2 border-b border-x border-solid rounded-b-xl outline-none resize-y h-[10em]" type="text" id="tDesc" name="editTaskDesc" maxlength="250" placeholder="This field is optional" cols="30" rows="10"></textarea>
-            <input class="flex text-on-primary-container hover:bg-primary-container justify-center
-            w-full h-14 mt-6 border border-on-primary-container border-opacity-10 border-solid rounded-3xl hover:border-primary-container py-2 px-7 shadow-xl" 
-            type="submit"  value="Edit">
-        </form>
+    <div id="editTaskFormModal" class="flex-col hidden">
+        <div id="formContainer" class="bg-tertiary-container my-[10%] mx-[30%] px-6 py-8 border-[1em] border-solid border-tertiary-container rounded-2xl">
+            <h1 class="flex text-on-tertiary-container font-extrabold text-[50px]">Edit Task</h1>
+            <form id="editTaskForm" class="flex flex-col">
+                <label class="bg-tertiary text-on-tertiary px-3 pt-2 border-tertiary border-t border-x border-solid rounded-t-xl" for="tTitle">Task Title</label>
+                <input class="bg-tertiary text-on-tertiary mb-5 px-3 pb-2 border-tertiary border-b border-x border-solid rounded-b-xl outline-none" type="text" id="tTitle" name="editTaskTitle" required maxlength="50" placeholder="Your Task Name">
+                <label class="bg-tertiary text-on-tertiary px-3 pt-2 border-tertiary border-t border-x border-solid rounded-t-xl" for="tDesc">Task Description</label>
+                <textarea class="bg-tertiary text-on-tertiary mb-5 px-3 pb-2 border-tertiary border-b border-x border-solid rounded-b-xl outline-none resize-y h-[10em]" type="text" id="tDesc" name="editTaskDesc" maxlength="250" placeholder="This field is optional" cols="30" rows="10"></textarea>
+                <input class="flex text-on-tertiary-container hover:bg-tertiary justify-center
+                w-full h-14 mt-6 border border-tertiary border-opacity-10 border-solid rounded-3xl hover:text-on-tertiary py-2 px-7 shadow-xl" 
+                type="submit"  value="Edit">
+            </form>
+        </div>
     </div>
     
 </body>

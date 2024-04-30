@@ -131,6 +131,13 @@ addTaskForm.addEventListener('submit', (event) => {
     updateTimeLine();
 });
 
+document.addEventListener('click', (event) => {
+    //If the user clicks outside the modal, close it
+    if(event.target == editFormModal){
+        editFormModal.style.display = "none";
+        editForm.reset();
+    }
+})
 
 //FUNCTIONS
 
