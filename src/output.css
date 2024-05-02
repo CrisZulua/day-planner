@@ -612,10 +612,6 @@ video {
   height: 90vh;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .w-12 {
   width: 3rem;
 }
@@ -628,45 +624,72 @@ video {
   width: 7rem;
 }
 
-.w-\[90vw\] {
-  width: 90vw;
-}
-
 .w-full {
   width: 100%;
 }
 
-.w-\[100\%\] {
-  width: 100%;
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.w-\[75vw\] {
-  width: 75vw;
-}
-
-.w-\[70vw\] {
-  width: 70vw;
-}
-
-.w-\[60vw\] {
-  width: 60vw;
-}
-
-.w-\[68vw\] {
-  width: 68vw;
-}
-
-.max-w-\[25vw\] {
-  max-width: 25vw;
-}
-
 .max-w-\[20vw\] {
   max-width: 20vw;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.6s ease-out both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-in both;
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-in {
+  animation: zoom-in 0.6s ease-out both;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-in-out both;
 }
 
 .resize-y {
@@ -679,10 +702,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 .content-between {
@@ -752,10 +771,6 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-r {
-  border-right-width: 1px;
-}
-
 .border-t {
   border-top-width: 1px;
 }
@@ -783,10 +798,6 @@ video {
   --tw-border-opacity: 0.1;
 }
 
-.border-opacity-20 {
-  --tw-border-opacity: 0.2;
-}
-
 .bg-body-bg {
   --tw-bg-opacity: 1;
   background-color: rgb(240 243 232 / var(--tw-bg-opacity));
@@ -810,10 +821,6 @@ video {
 .bg-tertiary-container {
   --tw-bg-opacity: 1;
   background-color: rgb(187 235 235 / var(--tw-bg-opacity));
-}
-
-.bg-\[transparent\] {
-  background-color: transparent;
 }
 
 .px-3 {
@@ -865,24 +872,24 @@ video {
   font-size: 25px;
 }
 
-.text-\[50px\] {
-  font-size: 50px;
-}
-
 .text-\[40px\] {
   font-size: 40px;
+}
+
+.text-\[50px\] {
+  font-size: 50px;
 }
 
 .font-extrabold {
   font-weight: 800;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-medium {
   font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-on-primary-container {
@@ -919,6 +926,14 @@ video {
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.animate-duration-200 {
+  animation-duration: 200ms;
 }
 
 .hover\:border-primary-container:hover {

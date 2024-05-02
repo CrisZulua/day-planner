@@ -13,6 +13,7 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
+    "@midudev/tailwind-animations": "^0.0.7",
     "randomcolor": "^0.6.2",
     "vis-timeline": "^7.7.3"
   }

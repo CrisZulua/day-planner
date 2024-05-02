@@ -1,12 +1,11 @@
-//TO DO: 
-//Implementar tabla de tareas en la mitad inferior de la pagina
-
+//TO DO: Fix the bug that produces onAdd function. When editing a task added trough the timeline, the item loses text information.
 import { Timeline } from "vis-timeline/esnext";
 import { DataSet } from "vis-data/esnext";
 import "vis-timeline/styles/vis-timeline-graph2d.min.css";
 
 import randomColor from 'randomcolor';
 import "./src/items.css";
+
 
 
 //Get all the elements
@@ -39,6 +38,32 @@ var options = {
     orientation: {
         axis: 'top',
         item: 'top'
+    },
+
+    onAdd: function (item, callback) {
+        if(item.type === 'range') {
+            alert(`Are you sure you want to add this task?`);
+            const color = randomColor({luminosity: 'light',});
+            const task = {
+                id: ++tId,
+                content: item.content,
+                title: item.title,
+                start: item.start,
+                end: item.end,
+                style: `background-color: ${color}; border-color: ${color};`,	
+                type: 'range',
+                editable: true, 
+            }
+            console.log(task);
+            //Add task to DB
+            
+            addTaskToDB(task);
+            callback(null);
+            updateTimeLine();
+        }else{
+            callback(null);
+        }
+        
     },
 
     onRemove: function (item, callback) {
@@ -83,6 +108,7 @@ var options = {
 
     onUpdate: function(item, callback){
         //Updates the title
+        console.log(item);
         if(item.id!= null){
             //Checks if the title is in length limits
             if(item.content.length <50){
@@ -147,7 +173,7 @@ helpModalBtn.addEventListener('click', (event) => {
 
 document.addEventListener('click', (event) => {
     //If the user clicks outside the modal, close it
-    if(event.target == helpModal){
+    if(event.target == helpModal){        
         helpModal.style.display = "none";
     }
 });
