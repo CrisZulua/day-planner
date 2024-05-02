@@ -1,4 +1,5 @@
-//TO DO: Fix the bug that produces onAdd function. When editing a task added trough the timeline, the item loses text information.
+//TO DO: onAdd wprks fine, the problem is on onUpdate
+//Get id from last item in array if there is non id back to 1
 import { Timeline } from "vis-timeline/esnext";
 import { DataSet } from "vis-data/esnext";
 import "vis-timeline/styles/vis-timeline-graph2d.min.css";
@@ -15,6 +16,7 @@ const editFormModal = document.getElementById('editTaskFormModal');
 const editForm = document.getElementById('editTaskForm');
 const helpModalBtn = document.getElementById('helpModalBtn');
 const helpModal = document.getElementById('helpModal');
+
 
 let timeline;
 var items;
@@ -54,7 +56,6 @@ var options = {
                 type: 'range',
                 editable: true, 
             }
-            console.log(task);
             //Add task to DB
             
             addTaskToDB(task);
@@ -108,7 +109,6 @@ var options = {
 
     onUpdate: function(item, callback){
         //Updates the title
-        console.log(item);
         if(item.id!= null){
             //Checks if the title is in length limits
             if(item.content.length <50){
@@ -117,24 +117,9 @@ var options = {
                 editForm.elements.namedItem("editTaskDesc").value = item.title
                 //Shows modal containing the form to edit the task values
                 editFormModal.style.display = "block";
-                //Listen to submit event of the form to edit the task
-                editForm.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    //Gets the index of the task in the tasksArray
-                    let indexOnTasksArray = tasksArray.findIndex(task => task.id === item.id);
-                    //Updates the task in the tasksArray with values from the form
-                    tasksArray[indexOnTasksArray].content = editForm.elements.namedItem("editTaskTitle").value;
-                    tasksArray[indexOnTasksArray].title = editForm.elements.namedItem("editTaskDesc").value;
-                    //Updates session storage data
-                    sessionStorage.setItem(item.id.toString(), JSON.stringify(tasksArray[indexOnTasksArray]));
-                    //Resets the form and the modal
-                    editForm.reset();
-                    editFormModal.style.display = "none";
-                    //Updates timeline
-                    updateTimeLine();
-                    //Saves the changes in the item
-                    callback(null);
-                });
+                //Save item on session storage as toUpdate for the submit event to work on it
+                sessionStorage.setItem('toUpdate', JSON.stringify(item));
+                callback(null);
             }else{
                 alert(`The title of the task ${item.id} is too long`);
                 callback(null);
@@ -176,6 +161,26 @@ document.addEventListener('click', (event) => {
     if(event.target == helpModal){        
         helpModal.style.display = "none";
     }
+});
+
+//Update work
+editForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    //Get item toUpdate from sessionStorage
+    let item = JSON.parse(sessionStorage.getItem('toUpdate'));
+    //Gets the index of the task in the tasksArray
+    let indexOnTasksArray = tasksArray.findIndex(task => task.id === item.id);
+    //Updates the task in the tasksArray with values from the form
+    tasksArray[indexOnTasksArray].content = editForm.elements.namedItem("editTaskTitle").value;
+    tasksArray[indexOnTasksArray].title = editForm.elements.namedItem("editTaskDesc").value;
+    //Updates session storage data
+    sessionStorage.setItem(item.id.toString(), JSON.stringify(tasksArray[indexOnTasksArray]));
+    //Resets the form and the modal
+    editForm.reset();
+    editFormModal.style.display = "none";
+    //Updates timeline
+    updateTimeLine();
+    sessionStorage.removeItem('toUpdate');
 });
 
 //FUNCTIONS
@@ -268,7 +273,7 @@ function getSessionStorageData(){
     items = new DataSet(tasksArray);
     //Create timeline
     timeline = new Timeline(graphContainer, items, options);
-    timeline.fit();    
+    timeline.fit();
 }
 
 function updateTimeLine(){
