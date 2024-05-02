@@ -26,11 +26,17 @@
             </details>
             <details name="help">
                 <summary class="text-on-secondary-container text-[25px] font-semibold">Add new tasks</summary>
-                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">To add a new task, fill out the form and click the add button.
-                </p>
-                <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">
-                    Whenever a new task is added, the timeline will automatically fit all tasks into the timeline.
-                </p>
+                <div class="animate-fade-in-down">
+                    <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">New tasks can be added by pressing <strong>Ctrl + Click</strong>
+                        and drag the end of the task to the desired point of time.
+                    </p>
+                    <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">One can also fill out the form and click the <strong>add</strong> button.
+                    </p>
+                    
+                    <p class="text-on-secondary-container text-[20px] text-wrap mb-5 ml-7">
+                        Whenever a new task is added, the timeline will automatically fit all tasks into the timeline.
+                    </p>
+                </div>
             </details>
             <details name="help">
                 <summary class="text-on-secondary-container text-[25px] font-semibold">Delete tasks</summary>
@@ -80,7 +86,7 @@
             </form>
         </div>
         <div class="flex">
-            <img id="helpModalBtn" src="./src/static/MaterialSymbolsHelp.svg" alt="Help" class="w-12 h-12 self-end justify-self-end">
+            <img id="helpModalBtn" src="./src/static/MaterialSymbolsHelp.svg" alt="Help" class="w-12 h-12 self-end justify-self-end hover:animate-pop hover:animate-iteration-count-infinite">
         </div>
     </div>
     <div class="flex flex-col w-full h-[90vh]" id="graphContainer"></div>

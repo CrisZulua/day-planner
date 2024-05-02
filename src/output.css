@@ -648,6 +648,22 @@ video {
   animation: fade-in-up 0.6s ease-in-out both;
 }
 
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.6s ease-in-out both;
+}
+
 .resize-y {
   resize: vertical;
 }
@@ -888,6 +904,46 @@ video {
   animation-duration: 200ms;
 }
 
+.animate-iteration-count-infinite {
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulsing {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hover\:animate-pulsing:hover {
+  animation: pulsing 1s ease-in-out both;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hover\:animate-pop:hover {
+  animation: pop 0.6s ease-out both;
+}
+
 .hover\:border-primary-container:hover {
   --tw-border-opacity: 1;
   border-color: rgb(184 243 151 / var(--tw-border-opacity));
@@ -906,4 +962,8 @@ video {
 .hover\:text-on-tertiary:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:animate-iteration-count-infinite:hover {
+  animation-iteration-count: infinite;
 }

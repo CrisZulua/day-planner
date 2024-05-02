@@ -1,4 +1,4 @@
-//TO DO: onAdd wprks fine, the problem is on onUpdate
+
 //Get id from last item in array if there is non id back to 1
 import { Timeline } from "vis-timeline/esnext";
 import { DataSet } from "vis-data/esnext";
@@ -41,10 +41,9 @@ var options = {
         axis: 'top',
         item: 'top'
     },
-
     onAdd: function (item, callback) {
-        if(item.type === 'range') {
-            alert(`Are you sure you want to add this task?`);
+        console.log(item);
+        if(item.type === 'range' && item.start <  item.end) {
             const color = randomColor({luminosity: 'light',});
             const task = {
                 id: ++tId,
@@ -70,7 +69,6 @@ var options = {
     onRemove: function (item, callback) {
         //Remove item from tasksArray and remove id from idsArray and redraw the timeline
         if(item.id != null){
-            alert(`Are you sure you want to delete this task ${item.id}?`);
             //Get the indexes of the items in arrays
             let indexOnTasksArray = tasksArray.findIndex(task => task.id === item.id);
             let indexOnIdsArray = idsArray.findIndex(id => id === item.id);
@@ -91,7 +89,7 @@ var options = {
 
     onMove: function (item,callback){
         //Updates the time stamps of the task moved
-        alert(`Are you sure you want to move this task ${item.id}?`);
+        
         if(item.id!= null && item.start < item.end){
             let indexOnTasksArray = tasksArray.findIndex(task => task.id === item.id);
             tasksArray[indexOnTasksArray].start = item.start;
