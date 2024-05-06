@@ -1,5 +1,3 @@
-
-//Get id from last item in array if there is non id back to 1
 import { Timeline } from "vis-timeline/esnext";
 import { DataSet } from "vis-data/esnext";
 import "vis-timeline/styles/vis-timeline-graph2d.min.css";
@@ -16,6 +14,8 @@ const editFormModal = document.getElementById('editTaskFormModal');
 const editForm = document.getElementById('editTaskForm');
 const helpModalBtn = document.getElementById('helpModalBtn');
 const helpModal = document.getElementById('helpModal');
+const body = document.getElementById('body');
+
 
 
 let timeline;
@@ -113,8 +113,11 @@ var options = {
                 //Set the form values with the values form the task to edit
                 editForm.elements.namedItem("editTaskTitle").value = item.content;
                 editForm.elements.namedItem("editTaskDesc").value = item.title
+                //Disable scrolling on body
+                body.style.overflow = 'hidden';
                 //Shows modal containing the form to edit the task values
                 editFormModal.style.display = "block";
+
                 //Save item on session storage as toUpdate for the submit event to work on it
                 sessionStorage.setItem('toUpdate', JSON.stringify(item));
                 callback(null);
@@ -146,6 +149,7 @@ document.addEventListener('click', (event) => {
     //If the user clicks outside the modal, close it
     if(event.target == editFormModal){
         editFormModal.style.display = "none";
+        body.style.overflow = 'auto';
         editForm.reset();
     }
 })
