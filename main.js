@@ -42,7 +42,6 @@ var options = {
         item: 'top'
     },
     onAdd: function (item, callback) {
-        console.log(item);
         if(item.type === 'range' && item.start <  item.end) {
             const color = randomColor({luminosity: 'light',});
             const task = {
